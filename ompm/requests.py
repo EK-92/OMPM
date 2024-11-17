@@ -1,13 +1,19 @@
-"""test api"""
-#!/usr/bin/env python
-
 import openmeteo_requests
 from openmeteo_sdk.Variable import Variable
 
+from OSMPythonTools.nominatim import Nominatim
+
+nominatim = Nominatim()
+city_name = "New York"
+city_json = nominatim.query(city_name).toJSON()[0]
+latitude = city_json["lat"]
+longitude = city_json["lon"]
+
+
 om = openmeteo_requests.Client()
 params = {
-    "latitude": 52.54,
-    "longitude": 13.41,
+    "latitude": latitude,
+    "longitude": longitude,
     "hourly": ["temperature_2m", "precipitation", "wind_speed_10m"],
     "current": ["temperature_2m", "relative_humidity_2m"]
 }
