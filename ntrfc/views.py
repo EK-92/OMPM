@@ -15,10 +15,10 @@ longitude = city_json["lon"]
 
 om = openmeteo_requests.Client()
 params = {
-    "latitude": latitude,
-    "longitude": longitude,
-    "hourly": ["temperature_2m", "precipitation", "wind_speed_10m"],
-    "current": ["temperature_2m", "relative_humidity_2m"]
+  "latitude": latitude,
+  "longitude": longitude,
+  "hourly": ["temperature_2m", "precipitation", "wind_speed_10m"],
+  "current": ["temperature_2m", "relative_humidity_2m"]
 }
 
 responses = om.weather_api("https://api.open-meteo.com/v1/forecast", params=params)
@@ -32,6 +32,6 @@ def index(request):
   template = loader.get_template("ntrfc/index.html")
   return HttpResponse(template.render())
 
-def city(request):
+def city(request, city_name):
   template = loader.get_template("ntrfc/city.html")
-  return HttpResponse(template.render())
+  return HttpResponse(template.render(request, city_name))
