@@ -15,6 +15,7 @@ django = "^5.1.3"
 pylint = "^3.3.1"
 seaborn = "^0.13.2"
 django-bootstrap5 = "^24.3"
+osmpythontools = "^0.3.5"
 
 
 [build-system]

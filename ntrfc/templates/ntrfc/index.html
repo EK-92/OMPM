@@ -1,0 +1,16 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Welcome to OMPM</h1>
+    <form action="{% url 'ntrfc:city' city_name %}" method="get">
+      {% csrf_token %}
+      <fieldset>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <label for="city_name_input">Enter city name to continue</label><br>
+        <input type="text" name="city_name" id="city_name_input" value="{{ city_name }}">
+      </fieldset>
+      <input type="submit" value="Find lonlat">
+    </form>
+  </body>
+</html>
